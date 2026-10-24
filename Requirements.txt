@@ -1,0 +1,12 @@
+langchain
+langchain-core
+langchain-community
+langchain-text-splitters
+
+langchain-groq
+langchain-tavily
+
+python-dotenv
+tavily-python
+
+streamlit
