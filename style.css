@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Sora:wght@500;700;800&display=swap');
+
+:root {
+  --ink: #0e1330;
+  --ink-2: #161c42;
+  --dusk: #2a2f6b;
+  --amber: #ffb454;
+  --teal: #3ddbc4;
+  --rose: #ff6b8a;
+  --mist: #e8ecff;
+  --mist-dim: #a9b0d6;
+  --glass: rgba(255, 255, 255, 0.06);
+  --line: rgba(255, 255, 255, 0.12);
+}
+
+/* ---------- base ---------- */
+html, body, [class*="css"], .stApp {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--mist);
+}
+.stApp {
+  background:
+    radial-gradient(900px 500px at 85% -10%, rgba(255, 180, 84, 0.16), transparent 60%),
+    radial-gradient(700px 500px at -10% 30%, rgba(61, 219, 196, 0.10), transparent 60%),
+    linear-gradient(180deg, var(--ink) 0%, var(--ink-2) 100%);
+}
+header[data-testid="stHeader"] { background: transparent; }
+#MainMenu, footer { visibility: hidden; }
+.block-container { max-width: 880px; padding-top: 1.5rem; padding-bottom: 6rem; }
+
+/* ---------- sidebar ---------- */
+[data-testid="stSidebar"] {
+  background: rgba(10, 13, 38, 0.85);
+  backdrop-filter: blur(14px);
+  border-right: 1px solid var(--line);
+}
+.brand {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: 1.7rem;
+  letter-spacing: -0.02em;
+  background: linear-gradient(90deg, var(--amber), var(--rose));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.brand-sub { color: var(--mist-dim); font-size: 0.85rem; margin-bottom: 1.2rem; }
+.side-title {
+  font-family: 'Sora', sans-serif;
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--mist-dim);
+  margin: 0.5rem 0 0.4rem;
+  padding-left: 0.6rem;
+  border-left: 3px solid var(--teal);
+}
+.stat {
+  background: var(--glass);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  flex-direction: column;
+}
+.stat b { font-family: 'Sora', sans-serif; font-size: 1.4rem; color: var(--amber); }
+.stat span { font-size: 0.78rem; color: var(--mist-dim); }
+
+/* ---------- hero (the one memorable moment) ---------- */
+.hero {
+  position: relative;
+  overflow: hidden;
+  border-radius: 22px;
+  padding: 2.4rem 2rem 4.2rem;
+  margin-bottom: 1.4rem;
+  background: linear-gradient(180deg, var(--dusk) 0%, #5a3a7a 55%, #c4607a 85%, var(--amber) 120%);
+  border: 1px solid var(--line);
+}
+.hero-glow {
+  position: absolute;
+  left: 50%;
+  bottom: -90px;
+  width: 520px;
+  height: 260px;
+  transform: translateX(-50%);
+  background: radial-gradient(closest-side, rgba(255, 200, 120, 0.85), transparent);
+  animation: sunrise 7s ease-in-out infinite alternate;
+}
+@keyframes sunrise {
+  from { opacity: 0.55; transform: translateX(-50%) translateY(18px) scale(0.92); }
+  to   { opacity: 1;    transform: translateX(-50%) translateY(0)    scale(1.05); }
+}
+.hero-text { position: relative; z-index: 2; }
+.hero h1 {
+  font-family: 'Sora', sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+  padding: 0;
+  color: #fff;
+  max-width: 520px;
+}
+.hero p { margin: 0; color: rgba(255, 255, 255, 0.82); max-width: 460px; }
+.skyline {
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  width: 100%; height: 64px;
+  z-index: 3;
+}
+.skyline path { fill: var(--ink-2); }
+
+.empty {
+  text-align: center;
+  color: var(--mist-dim);
+  padding: 1.6rem;
+  border: 1px dashed var(--line);
+  border-radius: 16px;
+}
+
+/* ---------- chat ---------- */
+[data-testid="stChatMessage"] {
+  background: var(--glass);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 0.9rem 1.1rem;
+  margin-bottom: 0.7rem;
+  backdrop-filter: blur(8px);
+}
+[data-testid="stChatMessage"]:has([data-testid="stChatMessageAvatarUser"]) {
+  background: rgba(61, 219, 196, 0.08);
+  border-color: rgba(61, 219, 196, 0.25);
+}
+[data-testid="stChatMessage"] a { color: var(--amber); }
+[data-testid="stChatMessage"] p { line-height: 1.6; }
+
+.chips { display: flex; gap: 0.4rem; margin-bottom: 0.5rem; flex-wrap: wrap; }
+.chip {
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.2rem 0.65rem;
+  border-radius: 999px;
+  background: rgba(255, 180, 84, 0.14);
+  border: 1px solid rgba(255, 180, 84, 0.4);
+  color: var(--amber);
+}
+
+/* ---------- approval card ---------- */
+.approval {
+  margin: 1rem 0 0.6rem;
+  padding: 1rem 1.2rem;
+  border-radius: 16px;
+  background: rgba(255, 107, 138, 0.08);
+  border: 1px solid var(--rose);
+  animation: ring 2s ease-in-out infinite;
+}
+@keyframes ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 107, 138, 0.45); }
+  50%      { box-shadow: 0 0 0 8px rgba(255, 107, 138, 0); }
+}
+.approval-title { font-family: 'Sora', sans-serif; font-weight: 700; margin-bottom: 0.5rem; }
+.call { display: flex; align-items: center; gap: 0.6rem; padding: 0.3rem 0; flex-wrap: wrap; }
+.call code {
+  background: rgba(0, 0, 0, 0.35);
+  color: var(--teal);
+  padding: 0.15rem 0.5rem;
+  border-radius: 8px;
+}
+
+/* ---------- buttons, inputs ---------- */
+.stButton > button {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  color: var(--mist);
+  background: var(--glass);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin-top: 0.5rem;
+  transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.stButton > button:hover {
+  transform: translateY(-2px);
+  border-color: var(--amber);
+  background: rgba(255, 180, 84, 0.12);
+  color: #fff;
+}
+.stButton > button:focus-visible { outline: 2px solid var(--teal); outline-offset: 2px; }
+.stButton > button[kind="primary"] {
+  background: linear-gradient(90deg, var(--teal), #2bb5ff);
+  color: var(--ink);
+  border: none;
+}
+.stButton > button[kind="primary"]:hover { filter: brightness(1.1); }
+
+[data-testid="stChatInput"] {
+  background: rgba(14, 19, 48, 0.9);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+[data-testid="stChatInput"]:focus-within { border-color: var(--amber); }
+[data-testid="stSelectbox"] > div > div {
+  background: var(--glass);
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+[data-testid="stBottom"] > div { background: transparent; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow, .approval { animation: none; }
+  .stButton > button { transition: none; }
+}
